@@ -1,6 +1,7 @@
 package gofillslicewithrand
 
 import (
+	"log"
 	"math/rand"
 	"sync"
 	"time"
@@ -16,6 +17,7 @@ func mathRandRead(p []byte) {
 	defer fallbackLck.Unlock()
 	if fallbackRand == nil {
 		fallbackRand = rand.New(rand.NewSource(time.Now().UnixNano()))
+		log.Print("WARN: allocated fall-back random source.")
 	}
 	fallbackRand.Read(p)
 }
