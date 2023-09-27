@@ -37,6 +37,9 @@ func fillIntInt64N(s []int, n int64) {
 }
 
 func FillIntN(s []int, n int) {
+	if n < 1 {
+		return
+	}
 	if n <= ((1 << 31) - 1) {
 		fillIntInt32N(s, int32(n))
 	} else {
